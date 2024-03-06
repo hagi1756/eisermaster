@@ -4,7 +4,7 @@ from core.forms import ContactForm
 
 # Create your views here.
 def index(request):
-    context={
+    context = {
         'blog':Blog.objects.filter(is_active='True').order_by('created_at',)
     }
     return render(request,'index.html',context=context)

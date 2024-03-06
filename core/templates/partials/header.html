@@ -1,5 +1,5 @@
 {%load static%}
-
+{% load i18n %}
 
  <!--================Header Menu Area =================-->
  <header class="header_area">
@@ -14,6 +14,29 @@
           </div>
           <div class="col-lg-5">
             <div class="float-right">
+
+
+
+
+
+              <form id="languageForm" action="{% url 'set_language' %}" method="post" style="display: block;">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.path }}">
+                <select style="width: 100px; height: 30px; border-radius: 15%; border: none; color: rgb(112, 58, 58); font-size: 18px;" name="language" id="language" onchange="this.form.submit()">
+
+                  {% get_current_language as LANGUAGE_CODE %}
+                  {% get_available_languages as LANGUAGES %}
+                  {% get_language_info_list for LANGUAGES as languages %}
+                  {% for language in languages %}
+                    <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}selected{% endif %}>
+                      {{ language.name_local }}
+                    </option>
+                  {% endfor %}
+                </select>
+              </form>
+
+
+
               <ul class="right_side">
                 <li>
                   <a href="cart.html">
@@ -39,6 +62,9 @@
     <div class="main_menu">
       <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light w-100">
+          
+
+
           <!-- Brand and toggle get grouped for better mobile display -->
           <a class="navbar-brand logo_h" href="{% url 'index' %}">
             <img src="{{ setting_data.logo.url }}" alt="" />
@@ -83,6 +109,11 @@
                         <a class="nav-link" href="{% url 'blog' %}">Blog</a>
                       </li>
                       
+
+                      
+                      
+
+
 
                  
                     </ul>

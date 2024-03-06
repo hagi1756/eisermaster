@@ -1,15 +1,21 @@
 from django.db import models
-
+from django.utils.translation import gettext as _
 # Create your models here.
+
+
 SIZE = (
-    ('XS','Extra Small'),
-    ('S','Small'),
+
+('XS','Extra Small'),
+('S','Small'),
 ('M','Medium'),
 ('L','Large'),
-('XL','Extra large'),
+('EL','Extra large'),
 ('XXL','Extra Extra large'),
 ('XXXL','Extra Extra Extra large'),
+
 )
+
+
 class Basemodel(models.Model):
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
@@ -23,8 +29,8 @@ class Category(Basemodel):
     name = models.CharField(max_length=50)
 
     class Meta:
-        verbose_name='Catagory'
-        verbose_name_plural='Catagories'
+        verbose_name=_('Catagory')
+        verbose_name_plural=_('Catagories')
     
 
     def __str__(self) -> str:
@@ -41,8 +47,8 @@ class Product(Basemodel):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name='Product'
-        verbose_name_plural='Products'
+        verbose_name=_('Product')
+        verbose_name_plural=_('Products')
 
     def __str__(self) -> str:
          return f"{self.name}, {self.created_at}"
@@ -57,30 +63,23 @@ class Blog(Basemodel):
     
 
     class Meta:
-        verbose_name='Blog'
-        verbose_name_plural='Blogs'
+        verbose_name=_('Blog')
+        verbose_name_plural=_('Blogs')
         ordering = ('created_at',)
 
     def __str__(self):
          return self.title
     
-    # def save(self, *args, **kwargs):
-    #     from core.utils.replace_letter import replace_letter
-
-    #     if not self.slug:
-    #         self.slug = replace_letter(self.title.lower())
-
-    #     super().save(*args, **kwargs)
-
-    
-
-    def save(self,*args,**kwargs):
+    def save(self, *args, **kwargs):
         from core.utils.replace_letter import replace_letter
 
         if not self.slug:
             self.slug = replace_letter(self.title.lower())
 
-        return super(Blog,self).save(*args,*kwargs)
+        return super().save(*args, **kwargs)
+
+    
+
 
     
     
@@ -95,8 +94,8 @@ class ContactUs(Basemodel):
 
 
     class Meta:
-        verbose_name='Contact Us'
-        verbose_name_plural='Contact Us'
+        verbose_name=_('Contact Us')
+        verbose_name_plural=_('Contact Us')
        
 
     def __str__(self):
@@ -120,8 +119,8 @@ class Setting(Basemodel):
 
     
     class Meta:
-        verbose_name='Setting'
-        verbose_name_plural='Setting'
+        verbose_name=_('Setting')
+        verbose_name_plural=_('Setting')
        
 
     
@@ -135,8 +134,8 @@ class Contact(Basemodel):
     
     
     class Meta:
-        verbose_name='Contact'
-        verbose_name_plural='Contacts'
+        verbose_name=_('Contact')
+        verbose_name_plural=_('Contacts')
        
 
     def __str__(self):
