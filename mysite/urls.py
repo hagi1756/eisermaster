@@ -17,18 +17,27 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from core.urls import urlpatterns as core_urls
+from user.urls import urlpatterns as user_urls
 from django.conf.urls.static import static
 from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(core_urls)),
+    path('user/', include(user_urls)),
     path('i18n/',include('django.conf.urls.i18n')),
+    # path('user/', include('user.urls'))
+    # path('social/', include('social_django.urls', namespace='social')),
+    # path('social/', include('social_django.urls', namespace='social')),
+    
+ 
+
 ]
 
 urlpatterns += i18n_patterns(
-    path('', include(core_urls)),
+     path('', include(core_urls)),
      path('rosetta/', include('rosetta.urls')),
                              )
 
@@ -40,3 +49,5 @@ if 'rosetta' in settings.INSTALLED_APPS:
     urlpatterns += [
         path('rosetta/', include('rosetta.urls')),
     ]
+
+

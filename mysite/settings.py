@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'core',
     'rosetta',
     'user',
+    # 'social_django',
 ]
 
 MIDDLEWARE = [

@@ -14,6 +14,8 @@ urlpatterns = [
     path('category/',category,name='category'),
     path('tracking/',tracking,name='tracking'),
     path('elements/',elements,name='elements'),
+    #  path('login/',login,name='login'),
+    #  path('register/',register,name='register'),
    
     
     
