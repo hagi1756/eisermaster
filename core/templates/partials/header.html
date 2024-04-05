@@ -235,7 +235,7 @@
                         <!-- End Language Selector -->
 
                         <!-- Top Menu Links -->
-                        <ul class="right_side" >
+                        <!-- <ul class="right_side" >
                             <li ><a href="{% url 'cart' %}">gift card</a></li>
                             <li ><a href="{% url 'tracking' %}">track order</a></li>
                             <li ><a href="{% url 'contact_us' %}">Contact Us</a></li>
@@ -247,9 +247,51 @@
                             <li ><a href="{% url 'register' %}">Register</a></li>
                             {% endif %}
                             
+                            
+                            <a href="{% url 'social:begin' 'google-oauth2' %}"><i class="fa-brands fa-google"></i></a>
+                            <a href="{% url 'social:begin' 'facebook' %}"><i class="fa-brands fa-facebook"></i></a>
                           
-                        </ul>
+                        </ul> -->
                         <!-- End Top Menu Links -->
+                        <!-- Top Menu Links -->
+<ul class="right_side">
+  <li><a href="{% url 'cart' %}">Gift Card</a></li>
+  <li><a href="{% url 'tracking' %}">Track Order</a></li>
+  <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
+
+  {% if user.is_authenticated %}
+  <li><a href="{% url 'logout' %}">Logout</a></li>
+  {% else %}
+  <li><a href="{% url 'login' %}">Login</a></li>
+  <li><a href="{% url 'register' %}">Register</a></li>
+  {% endif %}
+
+  <!-- Social Login Icons -->
+  <li>
+      <a href="{% url 'social:begin' 'google-oauth2' %}">
+          <i class="fa-brands fa-google"></i>
+      </a>
+  </li>
+  <li>
+      <a href="{% url 'social:begin' 'facebook' %}">
+          <i class="fa-brands fa-facebook"></i>
+      </a>
+  </li>
+</ul>
+ <!-- <div class="search-model">
+                                <div class="h-100 d-flex align-items-center justify-content-center">
+                                  <div class="search-close-switch">+</div>
+                                  <form class="search-model-form"  action="#">
+                                    {% csrf_token %}
+                                    <input name="all_search" type="text" id="search-input" placeholder="Search here.....">
+                                  </form>
+
+                                  </div>
+
+                                </div>
+                              </div> -->
+<!-- End Top Menu Links -->
+
                     </div>
                 </div>
             </div>
@@ -277,7 +319,7 @@
                 <!-- Navbar Links -->
                 <div class="collapse navbar-collapse offset w-100" id="navbarSupportedContent">
                     <div class="row w-100 mr-0">
-                        <div class="col-lg-7 pr-0">
+                        <div class="col-lg-5 pr-0">
                             <!-- Main Menu Links -->
                             <ul class="nav navbar-nav center_nav pull-right">
                                 <li class="nav-item active">
@@ -331,13 +373,29 @@
                             <!-- End Main Menu Links -->
                         </div>
 
-                        <div class="col-lg-5 pr-0">
+                        <div class="col-lg-7 pr-0">
                             <!-- Right Side Navbar Links -->
+                            
                             <ul class="nav navbar-nav navbar-right right_nav pull-right">
-                                <li class="nav-item">
-                                    <a href="#" class="icons">
-                                        <i class="ti-search" aria-hidden="true"></i>
-                                    </a>
+                              <!-- <div class="search-model">
+                                <div class="h-100 d-flex align-items-center justify-content-center">
+                                  <form class="search-model-form"  action="#">
+                                    {% csrf_token %}
+                                    <input name="all_search" type="text" id="search-input" placeholder="Search here.....">
+                                  </form>
+
+                                  </div>
+
+                                </div>
+                              </div> -->
+                              
+                                <li class="nav-item" >
+                                  
+                                  <form action="{% url 'all-search' %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="text" name="all_search" placeholder="Search here....." >
+                                    <button type="submit">axtar</button>
+                                  </form>
                                 </li>
 
                                 <li class="nav-item">

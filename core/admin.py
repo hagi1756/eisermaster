@@ -38,6 +38,7 @@
 from django.contrib import admin
 from core.models import Category, Product, Blog, ContactUs, Setting, Contact
 from modeltranslation.admin import TranslationAdmin
+from excel_response import ExcelResponse
 
 admin.site.register(Category)
 admin.site.register(ContactUs)
@@ -62,6 +63,17 @@ class BlogAdmin(TranslationAdmin):
     list_filter = ('created_at',)
     fields = ('title', 'slug', 'description', 'image', 'is_active',)
     ordering = ('created_at', 'is_active')
+
+    actions = ['excel_export']
+
+    def excel_export(self, request, queryset):
+        data = []
+        for blog in queryset:
+            data.append([blog.title,  blog.description,  blog.created_at])
+        return ExcelResponse(data, output_filename ='blogs')
+    excel_export.short_description = " Export to Excel" 
+
+
 
 
 admin.site.site_header = "Eiser Master"  # Bu ana sayfada görünecek başlık

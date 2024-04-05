@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'core',
     'rosetta',
     'user',
-    # 'social_django',
+    'rest_framework',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -153,3 +154,36 @@ LOCALE_PATHS = [
 # LOCALE_PATHS = (BASE_DIR + 'locale/', )
 
 AUTH_USER_MODEL ='user.Myuser'
+
+
+
+
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
+)  
+
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '543078767534-8827hsmt3d5ivg1hkc63hu6ek501dh9n.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+
+
+LOGIN_URL = '/auth/login/google-oauth2/'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+
+
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+
+
+#[...]
+
+SOCIAL_AUTH_FACEBOOK_KEY = '2202800970100297'        # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = 'a91ba3105ebfba9f264add27b09a0e31'  # App Secret
+
+#[...]

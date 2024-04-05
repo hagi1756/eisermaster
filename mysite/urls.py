@@ -21,6 +21,7 @@ from user.urls import urlpatterns as user_urls
 from django.conf.urls.static import static
 from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
+from core.api.urls import urlpatterns as core_api_urls
 
 
 urlpatterns = [
@@ -28,6 +29,8 @@ urlpatterns = [
     path('', include(core_urls)),
     path('user/', include(user_urls)),
     path('i18n/',include('django.conf.urls.i18n')),
+    path('api-auth/', include('rest_framework.urls')),
+    path('api/', include(core_api_urls)),
     # path('user/', include('user.urls'))
     # path('social/', include('social_django.urls', namespace='social')),
     # path('social/', include('social_django.urls', namespace='social')),
