@@ -143,6 +143,7 @@ def export_excel(request):
     return response
 
 
+
 def all_search(request):
     # blogs = Blog()
     # products = Product()
@@ -160,4 +161,3 @@ def all_search(request):
         }
         return render(request,'search.html',context=context)
     return render(request,'search.html') 
- 
