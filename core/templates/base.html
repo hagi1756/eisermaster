@@ -8,7 +8,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <link rel="icon" href="{% static 'img/fevicon.png' %}" type="image/png" />
-  <title>Eiser ecommerce | {% block title %} Haci {% endblock %}</title>
+  <title>Eiser ecommerce | {% block title %} Home {% endblock %}</title>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
   <link rel="stylesheet" href="{% static 'vendors/linericon/style.css' %}" />
@@ -24,6 +24,153 @@
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   <link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    /* Öğelerin yan yana hizalanması için CSS */
+    .top_menu ul.right_side {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .top_menu ul.right_side li {
+        margin-right: 10px;
+    }
+    .nav-elemanları {
+    display: inline-block; /* Display inline with other elements */
+}
+
+.nav-elemanları .nav-elemani {
+    margin: 20px; /* Adjust margin as needed */
+}
+
+.nav-elemanları .nav-elemani .arama-formu {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+}
+
+.nav-elemanları .nav-elemani .arama-formu input[type="text"] {
+    height: 30px; /* Set the height to match other buttons */
+    border-radius: 15px; /* Match border radius with other buttons */
+    border: none;
+    padding: 0 10px; /* Add padding for better appearance */
+}
+
+.nav-elemanları .nav-elemani .arama-formu button {
+    height: 30px; /* Set the height to match other buttons */
+    border-radius: 15px; /* Match border radius with other buttons */
+    border: none;
+    background-color: rgb(112, 58, 58); /* Match background color with other buttons */
+    color: white; /* Match text color with other buttons */
+    padding: 0 15px; /* Add padding for better appearance */
+    cursor: pointer; /* Set cursor to pointer */
+}
+
+.nav-elemanları .nav-elemani .arama-formu button:hover {
+    background-color: #8c4646; /* Change background color
+
+      .language-form {
+    display: inline-block; /* Display inline with other elements */
+    margin-right: 10px; /* Adjust margin as needed */
+}
+
+.language-form select {
+    width: auto; /* Adjust width automatically */
+    height: 30px; /* Set the height to match other buttons */
+    border-radius: 15%; /* Match border radius with other buttons */
+    border: none;
+    color: rgb(112, 58, 58);
+    font-size: 18px; /* Match font size with other buttons */
+    padding: 0 10px; /* Add padding for better appearance */
+    background-color: transparent; /* Set background color to transparent */
+    cursor: pointer; /* Set cursor to pointer */
+}
+
+.language-form select:focus {
+    outline: none; /* Remove default focus outline */
+}
+
+.right_side {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.right_side li {
+    display: inline-block; /* Display inline with other elements */
+    margin-right: 10px; /* Adjust margin as needed */
+}
+
+.right_side li:last-child {
+    margin-right: 0; /* Remove margin from last item */
+}
+
+
+
+
+
+
+
+.search-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 3vh; /* Set container height to viewport height */
+}
+
+.single_sidebar_widget.search_widget {
+    text-align: left; /* Align content to the left */
+}
+
+.single_sidebar_widget.search_widget form {
+    display: inline-block; /* Display form inline */
+}
+
+.single_sidebar_widget.search_widget .form-group {
+    margin-bottom: 100 /* Add margin between form groups */
+}
+
+.single_sidebar_widget.search_widget input[type="date"],
+.single_sidebar_widget.search_widget input[type="text"],
+.single_sidebar_widget.search_widget select {
+    height: 40px; /* Set height for inputs and select */
+    border-radius: 5px; /* Add border radius */
+    border: 1px solid #ccc; /* Add border */
+    padding: 0 10px; /* Add padding */
+}
+
+.single_sidebar_widget.search_widget input[type="date"],
+.single_sidebar_widget.search_widget input[type="text"] {
+    width: 180px; /* Set width for date and text inputs */
+}
+
+.single_sidebar_widget.search_widget select {
+    width: 180px; /* Set width for select */
+    background-color: #fff; /* Set background color */
+    margin: 10;
+}
+
+.single_sidebar_widget.search_widget button[type="submit"] {
+    height: 40px; /* Set height for submit button */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add border radius */
+    background-color: #007bff; /* Set background color */
+    color: #fff; /* Set text color */
+    padding: 0 20px; /* Add padding */
+    cursor: pointer; /* Set cursor to pointer */
+}
+
+.single_sidebar_widget.search_widget button[type="submit"]:hover {
+    background-color: #0056b3; /* Change background color on hover */
+}
+
+
+
+
+
+</style>
 </head>
 
 <body>

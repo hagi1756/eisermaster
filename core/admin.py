@@ -36,7 +36,7 @@
 
 
 from django.contrib import admin
-from core.models import Category, Product, Blog, ContactUs, Setting, Contact
+from core.models import Category, Product, Blog, ContactUs, Setting, Contact,Subscriber
 from modeltranslation.admin import TranslationAdmin
 from excel_response import ExcelResponse
 
@@ -44,6 +44,7 @@ admin.site.register(Category)
 admin.site.register(ContactUs)
 admin.site.register(Setting)
 admin.site.register(Contact)
+admin.site.register(Subscriber)
 
 
 @admin.register(Product)
@@ -52,7 +53,7 @@ class ProductAdmin(TranslationAdmin):
     search_fields = ('name', 'price', "category__name",'size',)
     list_filter = ('category', 'size')
     readonly_fields = ('like',)
-    fields = ('name', 'price', 'category', 'color', 'size', 'like', 'is_active')
+    fields = ('name', 'price', 'category', 'color', 'size', 'like', 'is_active','image','description')
     ordering = ('price',)
 
 

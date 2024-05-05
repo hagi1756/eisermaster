@@ -8,17 +8,23 @@ from excel_response import ExcelResponse
 # Create your views here.
 def index(request):
     context = {
-        'blog':Blog.objects.filter(is_active='True').order_by('created_at',)
+        'products':Product.objects.filter(is_active='True').order_by('created_at',),
+        'blog':Blog.objects.filter(is_active='True').order_by('created_at',),
+        'products2':Product.objects.filter(is_active='True').order_by('-created_at',),
+        'products3':Product.objects.filter(is_active='True').order_by('created_at',),
+        
     }
     return render(request,'index.html',context=context)
+    
 
 
-def shop (request):
+
+def shop(request):
     context = {
         'products':Product.objects.filter(is_active='True'),
         'title':'Shop',
     }
-    return render(request,'shop.html',context=context)
+    return render(request,'category.html',context=context)
 
 # class shopView(ListView):
 #     model = Product
@@ -32,6 +38,8 @@ def shop (request):
 #         'title':'Shop',
 #     }
 
+
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 def blog(request):
     from django.db.models import Q
     blogs = Blog.objects.filter(is_active='True').order_by('created_at',)
@@ -53,13 +61,21 @@ def blog(request):
                  Q(created_at__gte=start_date)&
                  Q(created_at__lte=end_date))
                                  
+    items_per_page = 3
+    paginator = Paginator(blogs, items_per_page)
+    page = request.GET.get("page")
+    try:
+       blogs = paginator.page(page)
+    except PageNotAnInteger:
+       blogs = paginator.page(1)
+    except EmptyPage:
+       blogs = paginator.page(paginator.num_pages)
         
         
         
     context = {
              'title':Setting.objects.get(id=3).blog_title,
              'blogs':blogs,
-             'blog_count':blogs.count(),
              'categories':Category.objects.filter(is_active=True),
             #  'no_results':'Blog tapilmadi' if blogs.count()==0 else None,
             'start_date':start_date,
@@ -77,19 +93,7 @@ def singleblog(request,blog_slug):
 
 
 
-# def contact(request):
-#     if request.method == 'POST':
-#         form = ContactForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return render(request, 'contact.html', context={'contact_form': ContactForm()})
-#     contacts = Contact.objects.filter(is_active=True).order_by('-created_at')
-#     context = {
-#         'contact_form': ContactForm(),
-#         'title': 'Contact page',
-#         'contact': contacts.first()
-#     }
-#     return render(request, 'contact.html',context=context)
+
 
 def contact_us(request):
     if request.method=='POST':
@@ -113,11 +117,18 @@ def cart(request):
 def checkout(request):
     return render(request,'checkout.html')
 
-def singleproduct(request):
-    return render(request,'single-product.html')
 
-def category(request):
-    return render(request,'category.html')
+
+def product_single(request, id):
+
+    context = {
+        "title": "Product Single Page",
+        "product_single": Product.objects.get(id=id),
+        "products": Product.objects.all().order_by("created_at"),
+    }
+    return render(request, "single-product.html", context=context)
+
+
 
 
 
@@ -128,12 +139,7 @@ def elements(request):
     return render(request,'elements.html')
 
 
-# def login(request):
-#     return render(request,'login.html')
 
-
-# def register(request):
-#     return render(request,'register.html')
 
 
 def export_excel(request):

@@ -45,6 +45,8 @@ class Product(Basemodel):
     size = models.CharField(max_length=50,choices=SIZE,default='M')
     like = models.IntegerField(default=0)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='media/products/')
+    description = models.TextField()
 
     class Meta:
         verbose_name=_('Product')
@@ -140,3 +142,11 @@ class Contact(Basemodel):
 
     def __str__(self):
          return self.name
+
+
+class Subscriber(Basemodel):
+    email = models.EmailField()
+    def __str__(self):
+        return self.email
+    
+    

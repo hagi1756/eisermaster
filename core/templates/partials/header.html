@@ -5,299 +5,62 @@
 
 
 
-
-
- <!--================Header Menu Area =================-->
- <!-- <header class="header_area">
-    <div class="top_menu">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-7">
-            <div class="float-left">
-              <p>Phone: +01 256 25 235</p>
-              <p>{{setting_data.email}}</p>
-            </div>
-          </div>
-          <div class="col-lg-5">
-            <div class="float-right">
-
-
-
-
-
-              <form id="languageForm" action="{% url 'set_language' %}" method="post" style="display: block;">
-                {% csrf_token %}
-                <input type="hidden" name="next" value="{{ request.path }}">
-                <select style="width: 100px; height: 30px; border-radius: 15%; border: none; color: rgb(112, 58, 58); font-size: 18px;" name="language" id="language" onchange="this.form.submit()">
-
-                  {% get_current_language as LANGUAGE_CODE %}
-                  {% get_available_languages as LANGUAGES %}
-                  {% get_language_info_list for LANGUAGES as languages %}
-                  {% for language in languages %}
-                    <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}selected{% endif %}>
-                      {{ language.name_local }}
-                    </option>
-                  {% endfor %}
-                </select>
-              </form>
-
-
-
-              <ul class="right_side">
-                <li>
-                  <a href="cart.html">
-                    gift card
-                  </a>
-                </li>
-                <li>
-                  <a href="tracking.html">
-                    track order
-                  </a>
-                </li>
-                <li>
-                  <a href="contact.html">
-                    Contact Us
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="main_menu">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light w-100">
-           -->
-
-
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <!-- <a class="navbar-brand logo_h" href="{% url 'index' %}">
-            <img src="{{ setting_data.logo.url }}" alt="" />
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button> -->
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <!-- <div class="collapse navbar-collapse offset w-100" id="navbarSupportedContent">
-            <div class="row w-100 mr-0">
-              <div class="col-lg-7 pr-0">
-                <ul class="nav navbar-nav center_nav pull-right">
-                  <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'index' %}">Home</a>
-                  </li>
-                  <li class="nav-item submenu dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                      aria-expanded="false">Shop</a>
-                    <ul class="dropdown-menu">
-                      <li class="nav-item">
-                        <a class="nav-link" href="{% url 'category' %}">Shop Category</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="{% url 'singleproduct' %}">Product Details</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="{% url 'checkout' %}">Product Checkout</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="{% url 'cart' %}">Shopping Cart</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="nav-item submenu dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                      aria-expanded="false">Blog</a>
-                    <ul class="dropdown-menu">
-                      <li class="nav-item">
-                        <a class="nav-link" href="{% url 'blog' %}">Blog</a>
-                      </li>
-                      
-
-                      
-                      
-
-
-
-                 
-                    </ul>
-                  </li>
-                  <li class="nav-item submenu dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                      aria-expanded="false">Pages</a>
-                    <ul class="dropdown-menu">
-                      <li class="nav-item">
-                        <a class="nav-link" href="{% url 'tracking' %}">Tracking</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="{% url 'elements' %}">Elements</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'contact_us' %}">Contact</a>
-                  </li>
-                </ul>
-              </div>
-
-              <div class="col-lg-5 pr-0">
-                <ul class="nav navbar-nav navbar-right right_nav pull-right">
-                  <li class="nav-item">
-                    <a href="#" class="icons">
-                      <i class="ti-search" aria-hidden="true"></i>
-                    </a>
-                  </li>
-
-                  <li class="nav-item">
-                    <a href="#" class="icons">
-                      <i class="ti-shopping-cart"></i>
-                    </a>
-                  </li>
-
-                  <li class="nav-item">
-                    <a href="#" class="icons">
-                      <i class="ti-user" aria-hidden="true"></i>
-                    </a>
-                  </li>
-
-                  <li class="nav-item">
-                    <a href="#" class="icons">
-                      <i class="ti-heart" aria-hidden="true"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </div>
-  </header>
-  ================Header Menu Area ================= -->
-
-
-
-
-
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Title</title>
-    <style>
-      /* Öğelerin yan yana hizalanması için CSS */
-      .top_menu ul.right_side {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          list-style: none;
-          padding: 0;
-          margin: 0;
-      }
-      .top_menu ul.right_side li {
-          margin-right: 10px;
-      }
-  </style>
-</head>
-<body>
-
 <header class="header_area">
-    <!-- Top Menu -->
+   
+    <!-- End Top Menu -->
+
     <div class="top_menu">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-7">
-                    <div class="float-left">
-                        <p>Phone: +01 256 25 235</p>
-                        <p>{{setting_data.email}}</p>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="float-right">
-                        <!-- Language Selector -->
-                        <form id="languageForm" action="{% url 'set_language' %}" method="post" style="display: block;">
-                            {% csrf_token %}
-                            <input type="hidden" name="next" value="{{ request.path }}">
-                            <select style="width: 100px; height: 30px; border-radius: 15%; border: none; color: rgb(112, 58, 58); font-size: 18px;" name="language" id="language" onchange="this.form.submit()">
-                                {% get_current_language as LANGUAGE_CODE %}
-                                {% get_available_languages as LANGUAGES %}
-                                {% get_language_info_list for LANGUAGES as languages %}
-                                {% for language in languages %}
-                                    <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}selected{% endif %}>
-                                        {{ language.name_local }}
-                                    </option>
-                                {% endfor %}
-                            </select>
-                        </form>
-                        <!-- End Language Selector -->
-
-                        <!-- Top Menu Links -->
-                        <!-- <ul class="right_side" >
-                            <li ><a href="{% url 'cart' %}">gift card</a></li>
-                            <li ><a href="{% url 'tracking' %}">track order</a></li>
-                            <li ><a href="{% url 'contact_us' %}">Contact Us</a></li>
-                            
-                            {% if user.is_authenticated %}
-                            <li ><a href="{% url 'logout' %}">Logout</a></li>
-                            {% else %}
-                            <li ><a href="{% url 'login' %}">Login</a></li>
-                            <li ><a href="{% url 'register' %}">Register</a></li>
-                            {% endif %}
-                            
-                            
-                            <a href="{% url 'social:begin' 'google-oauth2' %}"><i class="fa-brands fa-google"></i></a>
-                            <a href="{% url 'social:begin' 'facebook' %}"><i class="fa-brands fa-facebook"></i></a>
-                          
-                        </ul> -->
-                        <!-- End Top Menu Links -->
-                        <!-- Top Menu Links -->
-<ul class="right_side">
-  <li><a href="{% url 'cart' %}">Gift Card</a></li>
-  <li><a href="{% url 'tracking' %}">Track Order</a></li>
-  <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
-
-  {% if user.is_authenticated %}
-  <li><a href="{% url 'logout' %}">Logout</a></li>
-  {% else %}
-  <li><a href="{% url 'login' %}">Login</a></li>
-  <li><a href="{% url 'register' %}">Register</a></li>
-  {% endif %}
-
-  <!-- Social Login Icons -->
-  <li>
-      <a href="{% url 'social:begin' 'google-oauth2' %}">
-          <i class="fa-brands fa-google"></i>
-      </a>
-  </li>
-  <li>
-      <a href="{% url 'social:begin' 'facebook' %}">
-          <i class="fa-brands fa-facebook"></i>
-      </a>
-  </li>
-</ul>
- <!-- <div class="search-model">
-                                <div class="h-100 d-flex align-items-center justify-content-center">
-                                  <div class="search-close-switch">+</div>
-                                  <form class="search-model-form"  action="#">
-                                    {% csrf_token %}
-                                    <input name="all_search" type="text" id="search-input" placeholder="Search here.....">
-                                  </form>
-
-                                  </div>
-
-                                </div>
-                              </div> -->
-<!-- End Top Menu Links -->
-
-                    </div>
-                </div>
+          <div class="row">
+            <div class="col-lg-7">
+              <div class="float-left">
+                <p>Phone:{{setting_data.phone}}</p>
+                <p>{{setting_data.email}}</p>
+              </div>
             </div>
+            <div class="col-lg-5">
+              <div class="float-right">
+                <ul class="right_side">
+                  <li>
+                    <form  action="{% url 'set_language' %}" method="post" class="language-form" >
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ request.path }}">
+                        <select name="language" id="language" onchange="this.form.submit()">
+                            {% get_current_language as LANGUAGE_CODE %}
+                            {% get_available_languages as LANGUAGES %}
+                            {% get_language_info_list for LANGUAGES as languages %}
+                            {% for language in languages %}
+                                <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}selected{% endif %}>
+                                    {{ language.name_local }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                      </form>
+                  </li>
+                  <li>
+                    {% if user.is_authenticated %}
+                            <li><a href="{% url 'logout' %}">Logout</a></li>
+                            {% else %}
+                            <li><a href="{% url 'login' %}">Login</a></li>
+                            <li><a href="{% url 'register' %}">Register</a></li>
+                            {% endif %}
+                  </li>
+                  <li>
+                    <a href="contact.html">
+                      Contact Us
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{% url 'social:begin' 'google-oauth2' %}">
+                        <i class="fa-brands fa-google"></i>
+                    </a>
+                </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-    <!-- End Top Menu -->
+      </div>
 
     <!-- Main Menu -->
     <div class="main_menu">
@@ -326,45 +89,14 @@
                                     <a class="nav-link" href="{% url 'index' %}">Home</a>
                                 </li>
                                 <li class="nav-item submenu dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                        aria-expanded="false">Shop</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{% url 'category' %}">Shop Category</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{% url 'singleproduct' %}">Product Details</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{% url 'checkout' %}">Product Checkout</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{% url 'cart' %}">Shopping Cart</a>
-                                        </li>
-                                    </ul>
+                                    <a class="nav-link" href="{% url 'shop' %}">Shop</a>
+                                   
                                 </li>
                                 <li class="nav-item submenu dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                        aria-expanded="false">Blog</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{% url 'blog' %}">Blog</a>
-                                        </li>
-                                        <!-- Other Blog Links Can Be Added Here -->
-                                    </ul>
+                                    <a class="nav-link" href="{% url 'blog' %}">Blog</a>
+                                   
                                 </li>
-                                <li class="nav-item submenu dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                        aria-expanded="false">Pages</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{% url 'tracking' %}">Tracking</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{% url 'elements' %}">Elements</a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                
                                 <li class="nav-item">
                                     <a class="nav-link" href="{% url 'contact_us' %}">Contact</a>
                                 </li>
@@ -377,52 +109,16 @@
                             <!-- Right Side Navbar Links -->
                             
                             <ul class="nav navbar-nav navbar-right right_nav pull-right">
-                              <!-- <div class="search-model">
-                                <div class="h-100 d-flex align-items-center justify-content-center">
-                                  <form class="search-model-form"  action="#">
-                                    {% csrf_token %}
-                                    <input name="all_search" type="text" id="search-input" placeholder="Search here.....">
-                                  </form>
-
-                                  </div>
-
-                                </div>
-                              </div> -->
-                              
-                                <li class="nav-item" >
-                                  
-                                  <form action="{% url 'all-search' %}" method="post">
-                                    {% csrf_token %}
-                                    <input type="text" name="all_search" placeholder="Search here....." >
-                                    <button type="submit">axtar</button>
-                                  </form>
+                             
+                              <div class="nav-elemanları">
+                                <li class="nav-elemani">
+                                    <form action="{% url 'all-search' %}" method="post" class="arama-formu">
+                                        {% csrf_token %}
+                                        <input type="text" name="all_search" placeholder="Buradan ara.....">
+                                        <button type="submit">Ara</button>
+                                    </form>
                                 </li>
-
-                                <li class="nav-item">
-                                    <a href="#" class="icons">
-                                        <i class="ti-shopping-cart"></i>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                  <a href="{% url 'login' %}" class="icons">
-                                    <i class="ti-user" aria-hidden="true"></i>
-                                  </a>
-                                </li>
-
-                                <!-- Login Link -->
-                                <!-- <li class="nav-item">
-                                    <a href="{% url 'login' %}" class="icons">
-                                        <i class="ti-user" aria-hidden="true"></i>
-                                    </a>
-                                </li> -->
-                                <!-- End Login Link -->
-
-                                <!-- Register Link -->
-                                <!-- <li class="nav-item">
-                                    <a href="{% url 'register' %}" class="icons">
-                                        <i class="ti-heart" aria-hidden="true"></i>
-                                    </a>
-                                </li> -->
+                            </div>                      
                                 <!-- End Register Link -->
                             </ul>
                             <!-- End Right Side Navbar Links -->

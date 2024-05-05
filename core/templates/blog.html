@@ -20,89 +20,50 @@
               <p>Very us move be blessed multiply night</p>
             </div>
             <div class="page_link">
-              <a href="index.html">Home</a>
-              <a href="blog.html">Blog  </a>
+              <a href="{% url 'index' %}">Home</a>
+              <a href="{% url 'blog' %}">Blog  </a>
             </div>
           </div>
         </div>
       </div>
+      
     </section>
     <!--================End Home Banner Area =================-->
 
   <!--================Blog Area =================-->
   <section class="blog_area section_gap">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mb-5 mb-lg-0">
-                <!-- Blog içeriği -->
-            </div>
-            <div class="col-lg-4">
-                <div class="blog_right_sidebar">
-                    <aside class="single_sidebar_widget search_widget">
-                        <form action="#" method="post">
-                            {% csrf_token %}
-                            <div class="form-group d-flex justify-content-center"></div>
-                            <div class="form-group d-flex">
-                                <input name="start_date" type="date" class="form-control mr-2" style="width: 180px;" placeholder="Başlangıç tarihi" value="{{ start_date }}">
-                                <input name="end_date" type="date" class="form-control mr-2" style="width: 180px;" placeholder="Bitiş tarihi" value="{{ end_date }}">
-                                <select name="category" class="form-control mr-2" style="width: 180px;">
-                                    <option value="">Kategori seçin</option>
-                                    {% for category in categories %}
-                                        <option value="{{ category.id }}">{{ category.name }}</option>
-                                    {% endfor %}
-                                </select>
-                                <input name="blog_search" type="text" class="form-control mr-2" style="width: 180px;" placeholder="Blog ara">
-                                <button class="btn btn-primary" type="submit">Ara</button>
-                            </div>
-                        </form>
-                        <!-- excell -->
-                        <form action= "{% url 'export_excel' %}" method="post">
-                          {% csrf_token %}
-                           <button class="btn btn-primary" type="submit">Excel download</button>
-                        </form>
-                    </aside>
-                    <!-- Diğer bileşenler -->
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="search-container">
+      <div class="col-lg-4">
+              <aside class="single_sidebar_widget search_widget" style="height: 200;">
+                  <form action="#" method="post">
+                      {% csrf_token %}
+                      <div class="form-group d-flex justify-content-center"></div>
+                      <div class="form-group d-flex">
+                          <input name="start_date" type="date" class="form-control mr-2" style="width: 180px;" placeholder="Başlangıç tarihi" value="{{ start_date }}">
+                          <input name="end_date" type="date" class="form-control mr-2" style="width: 180px;" placeholder="Bitiş tarihi" value="{{ end_date }}">
+                          <select name="category" class="form-control mr-2" style="width: 180px; height: 80;">
+                              <option value="">Kategori seçin</option>
+                              {% for category in categories %}
+                                  <option value="{{ category.id }}">{{ category.name }}</option>
+                              {% endfor %}
+                          </select>
+                          <input name="blog_search" type="text" class="form-control mr-2 ml-2" style="width: 180px;" placeholder="Blog ara">
+                          <button class="btn btn-primary" type="submit">Ara</button>
+                      </div>
+                  </form>
+                  <!-- excell -->
+                  <form action= "{% url 'export_excel' %}" method="post">
+                      {% csrf_token %}
+                      <button class="btn btn-primary" type="submit">Excel download</button>
+                  </form>
+              </aside>
+              <!-- Diğer bileşenler -->
+      </div>
+  </div>
+  
 </section>
 
-  <!-- <section class="blog_area section_gap">
-      <div class="container">
-
-        <aside class="single_sidebar_widget search_widget">
-          <form action="#"method="post">
-            {% csrf_token %} -->
-            <!-- start date -->
-            <!-- <input name="start date" type="date" class ="form-control" style=" width: 180px;" placeholder="Başlangıç tarihi"> -->
-            <!-- end date -->
-            <!-- <input name="end date" type="date" class ="form-control" style=" width: 180px;" placeholder="Bitiş tarihi"> -->
-            <!-- select category -->
-            <!-- <select name="category" class ="form-control" style=" width: 180px;"> -->
-              <!-- <option value="">
-                AXTAR
-              </option>
-              {% for category in categories %}
-              <option value="{{ category.id }}">
-                {{ category.name }}
-              </option>
-              {% endfor %}  -->
-            
-              <!-- <div class="form-group">
-                  <div class="input-group mb-3">
-                      <input name="blog_search" type="text" class="form-control" style=" width: 180px;" placeholder="Blog axtar">
-                      <div class="input-group-append">
-                           Arama düğmesini buraya ekleyin -->
-                          <!-- <button class="btn btn-primary" type="submit" style="margin-left: 10px;"> Search</button>
-                      </div>
-                  </div>
-              </div> -->
-              <!-- Bu düğme giriş grubunun dışında ve formu gönderecek -->
-              <!-- Onu CSS ile gizleyebilir ve arama düğmesine tıklandığında tıklama olayını tetikleyebilirsiniz -->
-              <!-- <button class="d-none" type="submit"></button> -->
-          <!-- </form> -->
-      <!-- </aside> --> -
+  
 
       <h3 class="text-center">
         {% if blogs.count == 0 %}
@@ -138,245 +99,46 @@
                             </ul>
                         </div>
                       </article>
-                      {%endfor%}
-                      <!-- <article class="blog_item">
-                        <div class="blog_item_img">
-                          <img class="card-img rounded-0" src="{% static 'img/blog/main-blog/m-blog-2.jpg' %}" alt="">
-                          <a href="#" class="blog_item_date">
-                            <h3>15</h3>
-                            <p>Jan</p>
-                          </a>
-                        </div>
-                        
-                        <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
-                                <h2>Google inks pact for new 35-storey office</h2>
-                            </a>
-                            <p>That dominion stars lights dominion divide years for fourth have don't stars is that he earth it first without heaven in place seed it second morning saying.</p>
-                            <ul class="blog-info-link">
-                              <li><a href="#"><i class="ti-user"></i> Travel, Lifestyle</a></li>
-                              <li><a href="#"><i class="ti-comments"></i> 03 Comments</a></li>
-                            </ul>
-                        </div>
-                      </article>
+                      {% endfor %}
+                    
 
-                      <article class="blog_item">
-                        <div class="blog_item_img">
-                          <img class="card-img rounded-0" src="{% static 'img/blog/main-blog/m-blog-3.jpg' %}" alt="">
-                          <a href="#" class="blog_item_date">
-                            <h3>15</h3>
-                            <p>Jan</p>
-                          </a>
-                        </div>
-                        
-                        <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
-                                <h2>Google inks pact for new 35-storey office</h2>
-                            </a>
-                            <p>That dominion stars lights dominion divide years for fourth have don't stars is that he earth it first without heaven in place seed it second morning saying.</p>
-                            <ul class="blog-info-link">
-                              <li><a href="#"><i class="ti-user"></i> Travel, Lifestyle</a></li>
-                              <li><a href="#"><i class="ti-comments"></i> 03 Comments</a></li>
-                            </ul>
-                        </div>
-                      </article>
 
-                      <article class="blog_item">
-                        <div class="blog_item_img">
-                          <img class="card-img rounded-0" src="{% static 'img/blog/main-blog/m-blog-4.jpg' %}" alt="">
-                          <a href="#" class="blog_item_date">
-                            <h3>15</h3>
-                            <p>Jan</p>
-                          </a>
-                        </div>
-                        
-                        <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
-                                <h2>Google inks pact for new 35-storey office</h2>
-                            </a>
-                            <p>That dominion stars lights dominion divide years for fourth have don't stars is that he earth it first without heaven in place seed it second morning saying.</p>
-                            <ul class="blog-info-link">
-                              <li><a href="#"><i class="ti-user"></i> Travel, Lifestyle</a></li>
-                              <li><a href="#"><i class="ti-comments"></i> 03 Comments</a></li>
-                            </ul>
-                        </div>
-                      </article>
 
-                      <article class="blog_item">
-                        <div class="blog_item_img">
-                          <img class="card-img rounded-0" src="{% static 'img/blog/main-blog/m-blog-5.jpg' %}" alt="">
-                          <a href="#" class="blog_item_date">
-                            <h3>15</h3>
-                            <p>Jan</p>
-                          </a>
-                        </div>
-                        
-                        <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
-                                <h2>Google inks pact for new 35-storey office</h2>
-                            </a>
-                            <p>That dominion stars lights dominion divide years for fourth have don't stars is that he earth it first without heaven in place seed it second morning saying.</p>
-                            <ul class="blog-info-link">
-                              <li><a href="#"><i class="ti-user"></i> Travel, Lifestyle</a></li>
-                              <li><a href="#"><i class="ti-comments"></i> 03 Comments</a></li>
-                            </ul>
-                        </div>
-                      </article> -->
-                      
 
 
                       <nav class="blog-pagination justify-content-center d-flex">
-                          <ul class="pagination">
-                              <li class="page-item">
-                                  <a href="#" class="page-link" aria-label="Previous">
-                                      <span aria-hidden="true">
-                                          <span class="ti-arrow-left"></span>
-                                      </span>
-                                  </a>
-                              </li>
-                              <li class="page-item">
-                                  <a href="#" class="page-link">1</a>
-                              </li>
-                              <li class="page-item active">
-                                  <a href="#" class="page-link">2</a>
-                              </li>
-                              <li class="page-item">
-                                  <a href="#" class="page-link" aria-label="Next">
-                                      <span aria-hidden="true">
-                                          <span class="ti-arrow-right"></span>
-                                      </span>
-                                  </a>
-                              </li>
-                          </ul>
+                        <ul class="pagination">
+                          <li class="page-item">
+                            {% if blogs.has_previous %}
+                              <a href="?page={{ blogs.previous_page_number }}" class="page-link" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                              </a>
+                            {% endif %}
+                          </li>
+                          {% for i in blogs.paginator.page_range %}
+                            <li class="page-item {% if i == blogs.number %}active{% endif %}">
+                              <a href="?page={{ i }}" class="page-link">{{ i }}</a>
+                            </li>
+                          {% endfor %}
+                          <li class="page-item">
+                            {% if blogs.has_next %}
+                              <a href="?page={{ blogs.next_page_number }}" class="page-link" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                              </a>
+                            {% endif %}
+                          </li>
+                        </ul>
                       </nav>
+                      
                   </div>
               </div>
               <div class="col-lg-4">
                   <div class="blog_right_sidebar">
-                      <aside class="single_sidebar_widget search_widget">
-                          <form action="#">
-                            <div class="form-group">
-                              <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Search Keyword">
-                                <div class="input-group-append">
-                                  <button class="btn" type="button"><i class="ti-search"></i></button>
-                                </div>
-                              </div>
-                            </div>
-                            <button class="main_btn rounded-0 w-100" type="submit">Search</button>
-                          </form>
-                      </aside>
+                      
 
-                      <aside class="single_sidebar_widget post_category_widget">
-                        <h4 class="widget_title">Category</h4>
-                        <ul class="list cat-list">
-                            <li>
-                                <a href="#" class="d-flex">
-                                    <p>Resaurant food</p>
-                                    <p>(37)</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex">
-                                    <p>Travel news</p>
-                                    <p>(10)</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex">
-                                    <p>Modern technology</p>
-                                    <p>(03)</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex">
-                                    <p>Product</p>
-                                    <p>(11)</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex">
-                                    <p>Inspiration</p>
-                                    <p>21</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex">
-                                    <p>Health Care (21)</p>
-                                    <p>09</p>
-                                </a>
-                            </li>
-                        </ul>
-                      </aside>
+                      
 
-                      <aside class="single_sidebar_widget popular_post_widget">
-                          <h3 class="widget_title">Recent Post</h3>
-                          <div class="media post_item">
-                              <img src="{% static 'img/blog/popular-post/post1.jpg' %}" alt="post">
-                              <div class="media-body">
-                                  <a href="single-blog.html">
-                                      <h3>From life was you fish...</h3>
-                                  </a>
-                                  <p>January 12, 2019</p>
-                              </div>
-                          </div>
-                          <div class="media post_item">
-                              <img src="{% static 'img/blog/popular-post/post2.jpg' %}" alt="post">                              
-                              <div class="media-body">
-                                  <a href="single-blog.html">
-                                      <h3>The Amazing Hubble</h3>
-                                  </a>
-                                  <p>02 Hours ago</p>
-                              </div>
-                          </div>
-                          <div class="media post_item">
-                              <img src="{% static 'img/blog/popular-post/post3.jpg' %}" alt="post">                              
-                              <div class="media-body">
-                                  <a href="single-blog.html">
-                                      <h3>Astronomy Or Astrology</h3>
-                                  </a>
-                                  <p>03 Hours ago</p>
-                              </div>
-                          </div>
-                          <div class="media post_item">
-                              <img src="{% static 'img/blog/popular-post/post4.jpg' %}" alt="post">
-                              <div class="media-body">
-                                  <a href="single-blog.html">
-                                      <h3>Asteroids telescope</h3>
-                                  </a>
-                                  <p>01 Hours ago</p>
-                              </div>
-                          </div>
-                      </aside>
-                      <aside class="single_sidebar_widget tag_cloud_widget">
-                          <h4 class="widget_title">Tag Clouds</h4>
-                          <ul class="list">
-                              <li>
-                                  <a href="#">project</a>
-                              </li>
-                              <li>
-                                  <a href="#">love</a>
-                              </li>
-                              <li>
-                                  <a href="#">technology</a>
-                              </li>
-                              <li>
-                                  <a href="#">travel</a>
-                              </li>
-                              <li>
-                                  <a href="#">restaurant</a>
-                              </li>
-                              <li>
-                                  <a href="#">life style</a>
-                              </li>
-                              <li>
-                                  <a href="#">design</a>
-                              </li>
-                              <li>
-                                  <a href="#">illustration</a>
-                              </li>
-                          </ul>
-                      </aside>
+                      
 
 
                       <aside class="single_sidebar_widget instagram_feeds">
@@ -419,11 +181,21 @@
                       <aside class="single_sidebar_widget newsletter_widget">
                         <h4 class="widget_title">Newsletter</h4>
 
-                        <form action="#">
-                          <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Enter email" required>
+                        
+
+                        <form method='post'class="form-inline">
+                          {% csrf_token %}
+                          <div class="wrap-input1 w-full p-b-4">
+                            {% comment %} <input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com"> {% endcomment %}
+                            {{subscriber_form.email}}
+                            <div class="focus-input1 trans-04"></div>
                           </div>
-                          <button class="main_btn rounded-0 w-100" type="submit">Subscribe</button>
+              
+                          <div class="p-t-18">
+                            <button class="main_btn rounded-0 w-100">
+                              Subscribe
+                            </button>
+                          </div>
                         </form>
                       </aside>
                   </div>
